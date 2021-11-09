@@ -107,6 +107,9 @@ export class OidcClient {
         var response = new SigninResponse(url, delimiter);
 
         if (!response.state) {
+            Log.error(url);
+            Log.error(delimiter);
+            Log.error(JSON.stringify(response));
             Log.error("OidcClient.readSigninResponseState: No state in response");
             return Promise.reject(new Error("No state in response"));
         }
